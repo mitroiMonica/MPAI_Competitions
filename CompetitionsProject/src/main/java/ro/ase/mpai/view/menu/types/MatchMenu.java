@@ -8,6 +8,8 @@ import ro.ase.mpai.model.Team;
 import ro.ase.mpai.model.match.Match;
 import ro.ase.mpai.model.match.MatchBuilder;
 import ro.ase.mpai.model.utils.enums.Stage;
+import ro.ase.mpai.model.utils.specification.ISpecification;
+import ro.ase.mpai.model.utils.specification.MatchDateSpecification;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +38,9 @@ public class MatchMenu implements AbstractMenu {
 
         LocalDateTime time = readTime("[Press Enter for unknown date]");
         if (time != null) {
+            if(!isValidDate (competition, time)) {
+                return;
+            }
             builder.addDate(time);
         }
 
@@ -70,6 +75,9 @@ public class MatchMenu implements AbstractMenu {
 
         LocalDateTime time = readTime("[press Enter for no change]");
         if (time != null) {
+            if(!isValidDate (actualMatch.getCompetition(), time)) {
+                return;
+            }
             builder.addDate(time);
         } else {
             builder.addDate(actualMatch.getDate());
@@ -211,5 +219,18 @@ public class MatchMenu implements AbstractMenu {
             match = MatchController.getMatch(id);
         }
         return match;
+    }
+
+    private boolean isValidDate (Competition competition, LocalDateTime time) {
+        ISpecification<LocalDateTime> dateSpecification = new MatchDateSpecification(
+                competition.getStartDate(),
+                competition.getEndDate()
+        );
+
+        if (!dateSpecification.isSatisfiedBy(time)) {
+            System.out.println("Error: The match date is not within the competition period.");
+            return false;
+        }
+        return true;
     }
 }
