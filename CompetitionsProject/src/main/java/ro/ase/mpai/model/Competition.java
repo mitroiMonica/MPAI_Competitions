@@ -1,7 +1,7 @@
 package ro.ase.mpai.model;
 
 import jakarta.persistence.*;
-import ro.ase.mpai.controller.MatchController;
+import ro.ase.mpai.presenter.MatchPresenter;
 import ro.ase.mpai.model.match.Match;
 import ro.ase.mpai.model.utils.enums.Level;
 import ro.ase.mpai.model.utils.observer.Observable;
@@ -44,7 +44,7 @@ public class Competition extends Observable {
     @Override
     public void sendNotificationToAll(String message) {
         Set<Team> notifiedTeams = new HashSet<>();
-        for (Match match : MatchController.getCompetitionMatches(this.id)) {
+        for (Match match : MatchPresenter.getCompetitionMatches(this.id)) {
             if (match.getTeam1() != null && match.getTeam1().isSubscribed()) {
                 notifiedTeams.add(match.getTeam1());
             }

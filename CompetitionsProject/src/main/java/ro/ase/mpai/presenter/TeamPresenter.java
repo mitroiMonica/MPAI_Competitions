@@ -1,4 +1,4 @@
-package ro.ase.mpai.controller;
+package ro.ase.mpai.presenter;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TeamController {
+public class TeamPresenter {
     public static void addTeam(Team team) {
         Session session = HibernateConnection.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -45,7 +45,7 @@ public class TeamController {
 
     public static Set<Team> getCompetitionTeams(int competitionId) {
         Set<Team> teams = new HashSet<>();
-        for (Match match : MatchController.getCompetitionMatches(competitionId)) {
+        for (Match match : MatchPresenter.getCompetitionMatches(competitionId)) {
             if (match.getTeam1() != null) {
                 teams.add(match.getTeam1());
             }

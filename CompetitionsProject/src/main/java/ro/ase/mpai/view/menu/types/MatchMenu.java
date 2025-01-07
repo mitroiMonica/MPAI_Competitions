@@ -1,8 +1,8 @@
 package ro.ase.mpai.view.menu.types;
 
-import ro.ase.mpai.controller.CompetitionController;
-import ro.ase.mpai.controller.MatchController;
-import ro.ase.mpai.controller.TeamController;
+import ro.ase.mpai.presenter.CompetitionPresenter;
+import ro.ase.mpai.presenter.MatchPresenter;
+import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.Competition;
 import ro.ase.mpai.model.Team;
 import ro.ase.mpai.model.match.Match;
@@ -23,7 +23,7 @@ public class MatchMenu implements AbstractMenu {
 
     @Override
     public void getAllEntities() {
-        List<Match> matches = MatchController.getAllMatches();
+        List<Match> matches = MatchPresenter.getAllMatches();
         for (Match m : matches) {
             System.out.println(m);
         }
@@ -61,7 +61,7 @@ public class MatchMenu implements AbstractMenu {
         Team team2 = new TeamMenu().getTeam();
         builder.addTeam2(team2);
 
-        MatchController.addMatch(builder.build());
+        MatchPresenter.addMatch(builder.build());
         System.out.println("Match added successfully!");
     }
 
@@ -119,12 +119,12 @@ public class MatchMenu implements AbstractMenu {
         if ("".equals(name1)) {
             builder.addTeam1(actualMatch.getTeam1());
         } else {
-            Team team = TeamController.getTeam(name1);
+            Team team = TeamPresenter.getTeam(name1);
             while (team == null && !"".equals(name1)) {
                 System.out.println("Team " + name1 + " does not exist! Use a valid team name.");
                 System.out.print("Enter team 1 name [press Enter for no change]: ");
                 name1 = scanner.nextLine();
-                team = TeamController.getTeam(name1);
+                team = TeamPresenter.getTeam(name1);
             }
             builder.addTeam1(team);
         }
@@ -134,12 +134,12 @@ public class MatchMenu implements AbstractMenu {
         if ("".equals(name2)) {
             builder.addTeam2(actualMatch.getTeam2());
         } else {
-            Team team = TeamController.getTeam(name2);
+            Team team = TeamPresenter.getTeam(name2);
             while (team == null && !"".equals(name2)) {
                 System.out.println("Team " + name2 + " does not exist! Use a valid team name.");
                 System.out.print("Enter team 2 name [press Enter for no change]: ");
                 name2 = scanner.nextLine();
-                team = TeamController.getTeam(name2);
+                team = TeamPresenter.getTeam(name2);
             }
             builder.addTeam2(team);
         }
@@ -149,12 +149,12 @@ public class MatchMenu implements AbstractMenu {
         if ("".equals(competitionId)) {
             builder.addCompetition(actualMatch.getCompetition());
         } else {
-            Competition competition = CompetitionController.getCompetition(Integer.parseInt(competitionId));
+            Competition competition = CompetitionPresenter.getCompetition(Integer.parseInt(competitionId));
             while (competition == null && !"".equals(competitionId)) {
                 System.out.println("Competition " + competitionId + " does not exist! Use a valid competition id.");
                 System.out.print("Enter competition id [press Enter for no change]: ");
                 competitionId = scanner.nextLine();
-                competition = CompetitionController.getCompetition(Integer.parseInt(competitionId));
+                competition = CompetitionPresenter.getCompetition(Integer.parseInt(competitionId));
             }
             builder.addCompetition(competition);
         }
@@ -162,7 +162,7 @@ public class MatchMenu implements AbstractMenu {
 
         Match updatedMatch = builder.build();
         updatedMatch.setId(actualMatch.getId());
-        MatchController.updateMatch(updatedMatch);
+        MatchPresenter.updateMatch(updatedMatch);
 
         System.out.println("Match updated successfully!");
     }
@@ -170,7 +170,7 @@ public class MatchMenu implements AbstractMenu {
     @Override
     public void deleteEntity() {
         Match match = getMatch();
-        MatchController.deleteMatch(match.getId());
+        MatchPresenter.deleteMatch(match.getId());
         System.out.println(match + " has been deleted!");
     }
 
@@ -211,12 +211,12 @@ public class MatchMenu implements AbstractMenu {
     private Match getMatch() {
         System.out.print("Enter match id: ");
         int id = Integer.parseInt(scanner.nextLine());
-        Match match = MatchController.getMatch(id);
+        Match match = MatchPresenter.getMatch(id);
         while (match == null) {
             System.out.println("Match " + id + " does not exist! Use a valid match id.");
             System.out.print("Enter match id: ");
             id = Integer.parseInt(scanner.nextLine());
-            match = MatchController.getMatch(id);
+            match = MatchPresenter.getMatch(id);
         }
         return match;
     }

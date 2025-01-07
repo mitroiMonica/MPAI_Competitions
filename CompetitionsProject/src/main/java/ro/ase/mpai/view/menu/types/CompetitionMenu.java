@@ -1,6 +1,6 @@
 package ro.ase.mpai.view.menu.types;
 
-import ro.ase.mpai.controller.CompetitionController;
+import ro.ase.mpai.presenter.CompetitionPresenter;
 import ro.ase.mpai.model.Competition;
 import ro.ase.mpai.model.utils.enums.Level;
 
@@ -16,7 +16,7 @@ public class CompetitionMenu implements AbstractMenu {
 
     @Override
     public void getAllEntities() {
-        List<Competition> competitions = CompetitionController.getAllCompetitions();
+        List<Competition> competitions = CompetitionPresenter.getAllCompetitions();
         for (Competition c : competitions) {
             System.out.println(c);
         }
@@ -39,7 +39,7 @@ public class CompetitionMenu implements AbstractMenu {
         String location = scanner.nextLine();
 
         Competition competition = new Competition(name, type, level, startDate, endDate, location);
-        CompetitionController.addCompetition(competition);
+        CompetitionPresenter.addCompetition(competition);
         System.out.println("Competition added successfully!");
     }
 
@@ -82,7 +82,7 @@ public class CompetitionMenu implements AbstractMenu {
 
         Competition newCompetition = new Competition(name, type, level, startDate, endDate, location);
         newCompetition.setId(competition.getId());
-        CompetitionController.updateCompetition(newCompetition);
+        CompetitionPresenter.updateCompetition(newCompetition);
 
         System.out.println("Competition updated successfully!");
     }
@@ -90,7 +90,7 @@ public class CompetitionMenu implements AbstractMenu {
     @Override
     public void deleteEntity() {
         Competition competition = getCompetition();
-        CompetitionController.deleteCompetition(competition.getId());
+        CompetitionPresenter.deleteCompetition(competition.getId());
         System.out.println("Competition " + competition.getId() + " has been deleted along with its matches!");
     }
 
@@ -131,12 +131,12 @@ public class CompetitionMenu implements AbstractMenu {
     protected Competition getCompetition() {
         System.out.print("Enter competition id: ");
         int id = Integer.parseInt(scanner.nextLine());
-        Competition competition = CompetitionController.getCompetition(id);
+        Competition competition = CompetitionPresenter.getCompetition(id);
         while (competition == null) {
             System.out.println("Competition " + id + " does not exist! Use a valid competition id.");
             System.out.print("Enter competition id: ");
             id = Integer.parseInt(scanner.nextLine());
-            competition = CompetitionController.getCompetition(id);
+            competition = CompetitionPresenter.getCompetition(id);
         }
         return competition;
     }

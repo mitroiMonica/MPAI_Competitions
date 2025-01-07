@@ -1,4 +1,4 @@
-package ro.ase.mpai.controller;
+package ro.ase.mpai.presenter;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,7 +8,7 @@ import ro.ase.mpai.model.Competition;
 
 import java.util.List;
 
-public class CompetitionController {
+public class CompetitionPresenter {
     public static void addCompetition(Competition competition) {
         Session session = HibernateConnection.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -46,9 +46,9 @@ public class CompetitionController {
         Competition competition = session.get(Competition.class, competitionId);
         competition.sendNotificationToAll("Competition " + competitionId + " has been removed!");
         session.delete(competition);
-        List<Match> matches = MatchController.getCompetitionMatches(competitionId);
+        List<Match> matches = MatchPresenter.getCompetitionMatches(competitionId);
         for (Match m : matches) {
-            MatchController.deleteMatch(m.getId());
+            MatchPresenter.deleteMatch(m.getId());
         }
         transaction.commit();
         session.close();

@@ -1,6 +1,6 @@
 package ro.ase.mpai.view.menu.types.decorator;
 
-import ro.ase.mpai.controller.TeamController;
+import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.Team;
 import ro.ase.mpai.model.utils.observer.Observable;
 import ro.ase.mpai.view.menu.types.AbstractMenu;
@@ -19,7 +19,7 @@ public class TeamMenuDecorator extends AbstractMenuDecorator {
         System.out.print("Enter team name: ");
         String name = scanner.nextLine();
 
-        Team team = TeamController.getTeam(name);
+        Team team = TeamPresenter.getTeam(name);
         if (team.isSubscribed()) {
             Observable.unsubscribe(team);
         } else {
@@ -34,7 +34,7 @@ public class TeamMenuDecorator extends AbstractMenuDecorator {
         System.out.print("Enter competition id: ");
         int competitionId = Integer.parseInt(scanner.nextLine());
 
-        Set<Team> teams = TeamController.getCompetitionTeams(competitionId);
+        Set<Team> teams = TeamPresenter.getCompetitionTeams(competitionId);
         for (Team t : teams) {
             System.out.println(t);
         }

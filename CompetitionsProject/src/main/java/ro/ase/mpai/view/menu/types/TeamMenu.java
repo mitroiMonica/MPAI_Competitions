@@ -1,6 +1,6 @@
 package ro.ase.mpai.view.menu.types;
 
-import ro.ase.mpai.controller.TeamController;
+import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.Team;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class TeamMenu implements AbstractMenu {
 
     @Override
     public void getAllEntities() {
-        List<Team> teams = TeamController.getAllTeams();
+        List<Team> teams = TeamPresenter.getAllTeams();
         for (Team t : teams) {
             System.out.println(t);
         }
@@ -32,7 +32,7 @@ public class TeamMenu implements AbstractMenu {
         String captainName = scanner.nextLine();
 
         Team team = new Team(teamName, noMembers, coachName, captainName);
-        TeamController.addTeam(team);
+        TeamPresenter.addTeam(team);
 
         System.out.println("Team added successfully!");
     }
@@ -59,7 +59,7 @@ public class TeamMenu implements AbstractMenu {
         String captainName = "".equals(newCaptainName) ? actualCaptainName : newCaptainName;
 
         Team newTeam = new Team(team.getName(), noMembers, coachName, captainName);
-        TeamController.updateTeam(newTeam);
+        TeamPresenter.updateTeam(newTeam);
 
         System.out.println("Team updated successfully!");
     }
@@ -67,19 +67,19 @@ public class TeamMenu implements AbstractMenu {
     @Override
     public void deleteEntity() {
         Team team = getTeam();
-        TeamController.deleteTeam(team.getName());
+        TeamPresenter.deleteTeam(team.getName());
         System.out.println(team + " has been deleted!");
     }
 
     protected Team getTeam() {
         System.out.print("Enter team name: ");
         String name = scanner.nextLine();
-        Team team = TeamController.getTeam(name);
+        Team team = TeamPresenter.getTeam(name);
         while (team == null) {
             System.out.println("Team " + name + " does not exist! Use a valid team name.");
             System.out.print("Enter team name: ");
             name = scanner.nextLine();
-            team = TeamController.getTeam(name);
+            team = TeamPresenter.getTeam(name);
         }
         return team;
     }

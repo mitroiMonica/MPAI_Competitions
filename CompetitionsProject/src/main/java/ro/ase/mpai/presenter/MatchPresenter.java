@@ -1,4 +1,4 @@
-package ro.ase.mpai.controller;
+package ro.ase.mpai.presenter;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -7,7 +7,7 @@ import ro.ase.mpai.model.match.Match;
 
 import java.util.List;
 
-public class MatchController {
+public class MatchPresenter {
     public static void addMatch(Match match) {
         Session session = HibernateConnection.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

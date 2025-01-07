@@ -1,6 +1,6 @@
 package ro.ase.mpai.view.menu.types.decorator;
 
-import ro.ase.mpai.controller.MatchController;
+import ro.ase.mpai.presenter.MatchPresenter;
 import ro.ase.mpai.model.match.Match;
 import ro.ase.mpai.view.menu.types.AbstractMenu;
 
@@ -18,7 +18,7 @@ public class MatchMenuDecorator extends AbstractMenuDecorator {
         System.out.print("Enter competition id: ");
         int competitionId = Integer.parseInt(scanner.nextLine());
 
-        List<Match> matches = MatchController.getCompetitionMatches(competitionId);
+        List<Match> matches = MatchPresenter.getCompetitionMatches(competitionId);
         for (Match m : matches)
             System.out.println(m);
     }

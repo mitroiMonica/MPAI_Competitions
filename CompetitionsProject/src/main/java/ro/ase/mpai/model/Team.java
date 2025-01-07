@@ -1,7 +1,7 @@
 package ro.ase.mpai.model;
 
 import jakarta.persistence.*;
-import ro.ase.mpai.controller.TeamController;
+import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.utils.observer.Observer;
 
 import java.util.Objects;
@@ -38,7 +38,7 @@ public class Team implements Observer {
 
     @Override
     public void changeSubscription(boolean isSubscribed) {
-        TeamController.changeSubscription(this.name, isSubscribed);
+        TeamPresenter.changeSubscription(this.name, isSubscribed);
     }
 
     //Used for the Set in the sendNotificationToAll method
