@@ -1,9 +1,9 @@
-package ro.ase.mpai.view.menu.types.decorator;
+package ro.ase.mpai.view.menu.decorator;
 
 import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.Team;
 import ro.ase.mpai.model.utils.observer.Observable;
-import ro.ase.mpai.view.menu.types.AbstractMenu;
+import ro.ase.mpai.view.menu.factory.AbstractMenu;
 
 import java.util.Scanner;
 import java.util.Set;

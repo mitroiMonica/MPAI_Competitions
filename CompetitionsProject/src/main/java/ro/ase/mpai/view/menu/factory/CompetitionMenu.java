@@ -1,4 +1,4 @@
-package ro.ase.mpai.view.menu.types;
+package ro.ase.mpai.view.menu.factory;
 
 import ro.ase.mpai.presenter.CompetitionPresenter;
 import ro.ase.mpai.model.Competition;
@@ -13,6 +13,9 @@ import java.util.Scanner;
 
 public class CompetitionMenu implements AbstractMenu {
     private final Scanner scanner = new Scanner(System.in);
+
+    CompetitionMenu() {
+    }
 
     @Override
     public void getAllEntities() {
@@ -128,7 +131,7 @@ public class CompetitionMenu implements AbstractMenu {
         return level;
     }
 
-    protected Competition getCompetition() {
+    Competition getCompetition() {
         System.out.print("Enter competition id: ");
         int id = Integer.parseInt(scanner.nextLine());
         Competition competition = CompetitionPresenter.getCompetition(id);

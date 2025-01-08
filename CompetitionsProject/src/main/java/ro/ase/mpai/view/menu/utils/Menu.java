@@ -3,9 +3,9 @@ package ro.ase.mpai.view.menu.utils;
 import ro.ase.mpai.service.HibernateConnection;
 import ro.ase.mpai.view.menu.factory.AbstractMenuFactory;
 import ro.ase.mpai.view.menu.factory.MenuFactory;
-import ro.ase.mpai.view.menu.types.AbstractMenu;
-import ro.ase.mpai.view.menu.types.decorator.MatchMenuDecorator;
-import ro.ase.mpai.view.menu.types.decorator.TeamMenuDecorator;
+import ro.ase.mpai.view.menu.factory.AbstractMenu;
+import ro.ase.mpai.view.menu.decorator.MatchMenuDecorator;
+import ro.ase.mpai.view.menu.decorator.TeamMenuDecorator;
 import ro.ase.mpai.view.utils.Entity;
 
 import java.util.Scanner;
@@ -37,7 +37,7 @@ public class Menu {
                     System.out.println("Invalid option. Try again.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid input.");
             }
         }
     }
@@ -70,7 +70,7 @@ public class Menu {
                     System.out.println("Invalid option. Try again.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid input.");
             }
         }
     }
@@ -106,7 +106,7 @@ public class Menu {
                     System.out.println("Invalid option. Try again.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid input.");
             }
         }
     }
@@ -136,7 +136,7 @@ public class Menu {
                     System.out.println("Invalid option. Try again.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid input.");
             }
         }
     }

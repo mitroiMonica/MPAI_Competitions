@@ -1,4 +1,4 @@
-package ro.ase.mpai.view.menu.types;
+package ro.ase.mpai.view.menu.factory;
 
 import ro.ase.mpai.presenter.TeamPresenter;
 import ro.ase.mpai.model.Team;
@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class TeamMenu implements AbstractMenu {
     private final Scanner scanner = new Scanner(System.in);
+
+    TeamMenu() {
+    }
 
     @Override
     public void getAllEntities() {
@@ -71,7 +74,7 @@ public class TeamMenu implements AbstractMenu {
         System.out.println(team + " has been deleted!");
     }
 
-    protected Team getTeam() {
+    Team getTeam() {
         System.out.print("Enter team name: ");
         String name = scanner.nextLine();
         Team team = TeamPresenter.getTeam(name);

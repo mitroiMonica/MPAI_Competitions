@@ -1,6 +1,6 @@
-package ro.ase.mpai.view.menu.types.decorator;
+package ro.ase.mpai.view.menu.decorator;
 
-import ro.ase.mpai.view.menu.types.AbstractMenu;
+import ro.ase.mpai.view.menu.factory.AbstractMenu;
 
 public abstract class AbstractMenuDecorator implements AbstractMenu {
     private final AbstractMenu abstractMenu;

@@ -1,4 +1,4 @@
-package ro.ase.mpai.view.menu.types;
+package ro.ase.mpai.view.menu.factory;
 
 import ro.ase.mpai.presenter.CompetitionPresenter;
 import ro.ase.mpai.presenter.MatchPresenter;
@@ -21,6 +21,9 @@ import java.util.Scanner;
 public class MatchMenu implements AbstractMenu {
     private final Scanner scanner = new Scanner(System.in);
 
+    MatchMenu() {
+    }
+
     @Override
     public void getAllEntities() {
         List<Match> matches = MatchPresenter.getAllMatches();
@@ -38,7 +41,7 @@ public class MatchMenu implements AbstractMenu {
 
         LocalDateTime time = readTime("[Press Enter for unknown date]");
         if (time != null) {
-            if(!isValidDate (competition, time)) {
+            if (!isValidDate(competition, time)) {
                 return;
             }
             builder.addDate(time);
@@ -75,7 +78,7 @@ public class MatchMenu implements AbstractMenu {
 
         LocalDateTime time = readTime("[press Enter for no change]");
         if (time != null) {
-            if(!isValidDate (actualMatch.getCompetition(), time)) {
+            if (!isValidDate(actualMatch.getCompetition(), time)) {
                 return;
             }
             builder.addDate(time);
@@ -221,7 +224,7 @@ public class MatchMenu implements AbstractMenu {
         return match;
     }
 
-    private boolean isValidDate (Competition competition, LocalDateTime time) {
+    private boolean isValidDate(Competition competition, LocalDateTime time) {
         ISpecification<LocalDateTime> dateSpecification = new MatchDateSpecification(
                 competition.getStartDate(),
                 competition.getEndDate()

@@ -1,8 +1,8 @@
-package ro.ase.mpai.view.menu.types.decorator;
+package ro.ase.mpai.view.menu.decorator;
 
 import ro.ase.mpai.presenter.MatchPresenter;
 import ro.ase.mpai.model.match.Match;
-import ro.ase.mpai.view.menu.types.AbstractMenu;
+import ro.ase.mpai.view.menu.factory.AbstractMenu;
 
 import java.util.List;
 import java.util.Scanner;
