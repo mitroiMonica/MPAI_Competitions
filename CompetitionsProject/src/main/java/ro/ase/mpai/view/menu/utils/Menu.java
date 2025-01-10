@@ -36,7 +36,7 @@ public class Menu {
                 } else {
                     System.out.println("Invalid option. Try again.");
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a valid input.");
             }
         }
@@ -69,7 +69,7 @@ public class Menu {
                 } else {
                     System.out.println("Invalid option. Try again.");
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a valid input.");
             }
         }
@@ -105,7 +105,7 @@ public class Menu {
                 } else {
                     System.out.println("Invalid option. Try again.");
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a valid input.");
             }
         }
@@ -135,7 +135,7 @@ public class Menu {
                 } else {
                     System.out.println("Invalid option. Try again.");
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a valid input.");
             }
         }
