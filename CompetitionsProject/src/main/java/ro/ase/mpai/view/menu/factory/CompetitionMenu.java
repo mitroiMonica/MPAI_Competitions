@@ -33,7 +33,7 @@ public class CompetitionMenu implements AbstractMenu {
         System.out.print("Enter competition type: ");
         String type = scanner.nextLine();
 
-        Level level = readLevel("[press Enter for unknown stage]");
+        Level level = readLevel("[press Enter for unknown level]");
 
         LocalDate startDate = readDate("start date [press Enter for unknown stage]");
         LocalDate endDate = readDate("end date [press Enter for unknown stage]");
