@@ -35,8 +35,8 @@ public class CompetitionMenu implements AbstractMenu {
 
         Level level = readLevel("[press Enter for unknown level]");
 
-        LocalDate startDate = readDate("start date [press Enter for unknown stage]");
-        LocalDate endDate = readDate("end date [press Enter for unknown stage]");
+        LocalDate startDate = readDate("start date [press Enter for unknown start date]");
+        LocalDate endDate = readDate("end date [press Enter for unknown end date]");
 
         System.out.print("Enter competition location: ");
         String location = scanner.nextLine();
