@@ -33,12 +33,10 @@ public class Match extends Observable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team1_name", nullable = false)
-    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Team team1;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team2_name", nullable = false)
-    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Team team2;
 
     private Match() {
